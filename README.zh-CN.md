@@ -182,7 +182,7 @@ Obsidian 尚未提供本插件所需的公开 Sync 接口，所以当前版本�
 
 ## 手动安装
 
-社区目录审核仍待完成，请勿假定已经能在 Obsidian 内置列表找到本插件。可以从 [GitHub Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases) 下载运行文件或安装 ZIP，也可以自行构建 `dist` ZIP：
+0.3.3 已完成社区目录自动审核。打开 [插件市场页面](https://community.obsidian.md/plugins/device-plugin-sync)，点击 **Add to Obsidian** 即可进入安装页面。如需手动安装，可以从 [GitHub Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases) 下载运行文件或安装 ZIP，也可以自行构建 `dist` ZIP：
 
 1. 先停用已有的 Device Selective Sync。
 2. 将 ZIP 中的三个运行文件放入仓库的实际配置目录：

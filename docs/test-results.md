@@ -3,7 +3,10 @@
 - The 0.3.2 branch preview reported that a settings heading must not repeat the plugin name. The redundant page heading is now removed; the introductory text and all controls remain.
 - Removed the now-unused `setHeading` test stub introduced in 0.3.2.
 - `npm run package`: type checking, all 168 tests (zero failures, zero skips), build, and ZIP packaging passed.
-- No synchronization, cleanup, saved data, or compatibility behavior changed. This version is checked with the directory branch preview before publication.
+- No synchronization, cleanup, saved data, or compatibility behavior changed.
+- On 2026-10-02 (UTC), the directory branch preview and the full 0.3.3 release review both completed for commit `4c4064fadb86f571e7bf4c23ee8a502bdbdd8eb9`. The report contained warnings and recommendations, with no blocking errors.
+- The public listing showed **Review: Satisfactory** and an enabled **Add to Obsidian** link. This confirms directory availability, not phone/iPad or end-to-end Sync correctness.
+- GitHub CI also passed for the same source commit. Uploaded runtime asset digests matched the local build; ZIP runtime files matched byte-for-byte.
 
 ---
 

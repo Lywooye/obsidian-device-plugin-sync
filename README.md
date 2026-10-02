@@ -182,7 +182,7 @@ Native-source tests read a developer’s locally installed desktop Obsidian buil
 
 ## Manual installation
 
-Community-directory approval is still pending; do not assume it is available in Obsidian’s built-in browser. Download the runtime files or installation ZIP from [GitHub Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases), or build the ZIP in `dist`:
+Version 0.3.3 completed the community directory’s automated review. Open the [community listing](https://community.obsidian.md/plugins/device-plugin-sync) and choose **Add to Obsidian**. For manual installation, download the runtime files or installation ZIP from [GitHub Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases), or build the ZIP in `dist`:
 
 1. Disable an existing Device Selective Sync installation first.
 2. Put the three runtime files from the ZIP in the vault's actual configuration folder:
