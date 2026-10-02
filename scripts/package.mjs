@@ -1,0 +1,14 @@
+import { mkdir, copyFile, readFile, rm, writeFile } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+const manifest = JSON.parse(await readFile('manifest.json', 'utf8'));
+const folder = `dist/${manifest.id}`;
+await rm(folder, { recursive: true, force: true });
+await mkdir(folder, { recursive: true });
+for (const file of ['main.js', 'manifest.json', 'styles.css']) await copyFile(file, `${folder}/${file}`);
+const name = `${manifest.id}-${manifest.version}.zip`;
+await rm(`dist/${name}`, { force: true });
+execFileSync('zip', ['-q', '-r', name, manifest.id], { cwd: 'dist' });
+const checksum = createHash('sha256').update(await readFile(`dist/${name}`)).digest('hex');
+await writeFile('dist/SHA256SUMS.txt', `${checksum}  ${name}\n`);
+console.log(`Built dist/${name}`);

@@ -1,0 +1,16 @@
+.dps { line-height: 1.6; }
+.dps .dps-status { padding: 12px; border: 1px solid var(--background-modifier-border); border-radius: 8px; }
+.dps .dps-warning { color: var(--text-warning); }
+.dps pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 10px; background: var(--background-secondary); }
+.dps details { margin: 12px 0; }
+.dps details summary { cursor: pointer; }
+.dps-table-wrap { overflow-x: auto; margin: 16px 0; }
+.dps table { width: 100%; border-collapse: collapse; }
+.dps th, .dps td { padding: 8px 12px; text-align: center; border-bottom: 1px solid var(--background-modifier-border); }
+.dps th:first-child, .dps td:first-child { text-align: left; min-width: 160px; }
+.dps-column-actions { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+.dps-column-actions button { font-size: var(--font-smallest); padding: 3px 8px; white-space: nowrap; }
+.dps small { color: var(--text-muted); overflow-wrap: anywhere; }
+.dps input[type='checkbox'] { min-width: 20px; min-height: 20px; }
+.dps-editor { width: min(960px, 94vw); }
+@media (max-width: 600px) { .dps .setting-item { flex-wrap: wrap; gap: 8px; } .dps th, .dps td { padding: 8px; } }

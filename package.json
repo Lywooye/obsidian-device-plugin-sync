@@ -1,0 +1,31 @@
+{
+  "name": "obsidian-device-plugin-sync",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Per-device plugin folder exclusions for Obsidian Sync (experimental)",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:native": "node scripts/check-native.cjs",
+    "package": "npm run check && npm test && npm run build && node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@types/jsdom": "21.1.7",
+    "@types/node": "22.19.7",
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0",
+    "obsidian": "1.13.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lywooye/obsidian-device-plugin-sync.git"
+  },
+  "homepage": "https://github.com/Lywooye/obsidian-device-plugin-sync",
+  "bugs": {
+    "url": "https://github.com/Lywooye/obsidian-device-plugin-sync/issues"
+  }
+}

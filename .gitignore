@@ -1,0 +1,9 @@
+/node_modules/
+/main.js
+/dist/
+/backups/
+.DS_Store
+*.asar
+/app.js
+.env
+.env.*
