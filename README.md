@@ -4,7 +4,7 @@ English · [简体中文](README.zh-CN.md)
 
 Choose which Obsidian plugins can sync on your computers, phone, and iPad. Manage all devices from one computer, or choose plugins for your phone or iPad on that device.
 
-This plugin is free under the [MIT license](LICENSE). It requires an **Obsidian account and a paid Obsidian Sync subscription**; it uses the official Sync service already configured for your vault. It is an independent community project, not an official Obsidian product. Version **0.3.2 is experimental**: it supports Obsidian 1.13.7 only when the device passes compatibility checks. Real phone and iPad sync has not yet been validated. Start with a test vault.
+This plugin is free under the [MIT license](LICENSE). It requires an **Obsidian account and a paid Obsidian Sync subscription**; it uses the official Sync service already configured for your vault. It is an independent community project, not an official Obsidian product. Version **0.3.3 is experimental**: it supports Obsidian 1.13.7 only when the device passes compatibility checks. Real phone and iPad sync has not yet been validated. Start with a test vault.
 
 [Repository](https://github.com/Lywooye/obsidian-device-plugin-sync) · [Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases)
 

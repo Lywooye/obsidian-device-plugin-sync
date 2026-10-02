@@ -1,6 +1,6 @@
 {
   "name": "obsidian-device-plugin-sync",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "description": "Per-device plugin folder exclusions for Obsidian Sync (experimental)",
   "scripts": {

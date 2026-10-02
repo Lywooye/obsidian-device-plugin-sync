@@ -57,7 +57,6 @@ export class Setting {
   constructor(parent: HTMLElement) { this.el = parent.appendChild(document.createElement('div')); this.el.className = 'mock-setting'; }
   setName(name: string) { this.el.dataset.name = name; const label = this.el.appendChild(document.createElement('span')); label.textContent = name; return this; }
   setDesc(text: string) { this.el.appendChild(document.createElement('small')).textContent = text; return this; }
-  setHeading() { this.el.classList.add('setting-item-heading'); return this; }
   addButton(fn: (c: any) => void) { fn(control(this.el.appendChild(document.createElement('button')))); return this; }
   addText(fn: (c: any) => void) { fn(control(this.el.appendChild(document.createElement('input')))); return this; }
   addDropdown(fn: (c: any) => void) { fn(control(this.el.appendChild(document.createElement('select')))); return this; }

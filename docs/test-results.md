@@ -1,3 +1,12 @@
+# 0.3.3 settings heading correction
+
+- The 0.3.2 branch preview reported that a settings heading must not repeat the plugin name. The redundant page heading is now removed; the introductory text and all controls remain.
+- Removed the now-unused `setHeading` test stub introduced in 0.3.2.
+- `npm run package`: type checking, all 168 tests (zero failures, zero skips), build, and ZIP packaging passed.
+- No synchronization, cleanup, saved data, or compatibility behavior changed. This version is checked with the directory branch preview before publication.
+
+---
+
 # 0.3.2 community review fixes
 
 - The 0.3.1 directory review reported two blocking errors: the manifest description included the redundant product name, and the settings heading used a raw HTML element.
