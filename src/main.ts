@@ -271,7 +271,7 @@ class DeviceSyncSettings extends PluginSettingTab {
     setLanguage(this.plugin.local?.language ?? 'zh', getLanguage());
     const generation = ++this.generation;
     container.empty(); container.addClass('dps');
-    container.createEl('h2', { text: 'Device Selective Sync' });
+    new Setting(container).setName('Device Selective Sync').setHeading();
     container.createEl('p', { text: t('intro') });
     if (this.plugin.localError) {
       container.createEl('p', { text: this.plugin.localError, cls: 'dps-warning' });

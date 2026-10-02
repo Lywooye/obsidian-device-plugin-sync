@@ -4,7 +4,7 @@
 
 选择哪些 Obsidian 插件可以在电脑、手机和 iPad 上同步。你可以在电脑上统一设置，也可以在手机或 iPad 上选择本机需要的插件。
 
-本插件免费，采用 [MIT 许可证](LICENSE)。需要 **Obsidian 账号和付费的 Obsidian Sync 订阅**，使用你已经为仓库配置的官方 Sync 服务。本插件是独立社区项目，并非 Obsidian 官方产品。当前版本为 **0.3.1，实验版本**：适配 Obsidian 1.13.7，并且需要通过本机兼容检查。手机和 iPad 的真实同步尚未完成验证，请先用测试仓库体验。
+本插件免费，采用 [MIT 许可证](LICENSE)。需要 **Obsidian 账号和付费的 Obsidian Sync 订阅**，使用你已经为仓库配置的官方 Sync 服务。本插件是独立社区项目，并非 Obsidian 官方产品。当前版本为 **0.3.2，实验版本**：适配 Obsidian 1.13.7，并且需要通过本机兼容检查。手机和 iPad 的真实同步尚未完成验证，请先用测试仓库体验。
 
 [代码仓库](https://github.com/Lywooye/obsidian-device-plugin-sync) · [下载发布版本](https://github.com/Lywooye/obsidian-device-plugin-sync/releases)
 

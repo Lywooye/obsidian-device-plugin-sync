@@ -1,3 +1,14 @@
+# 0.3.2 community review fixes
+
+- The 0.3.1 directory review reported two blocking errors: the manifest description included the redundant product name, and the settings heading used a raw HTML element.
+- The description now retains the paid Sync requirement without that word. The settings heading uses `Setting.setHeading()`; its test double implements the same method.
+- `npm run package`: type checking, all 168 existing tests (zero failures, zero skips), build, and ZIP packaging passed.
+- The remaining source warnings were reviewed. Method calls preserve their receiver, control-character checks and runtime thenable validation remain intentional, and actual vault paths continue to use `vault.configDir`.
+- No Sync behavior, saved policy, installed-plugin state, or compatibility guard was changed. Device/network validation limits remain unchanged.
+- This records local validation; acceptance of the new release still requires the directory review.
+
+---
+
 # 0.3.1 public release validation
 
 - Public display name changed to Device Selective Sync; the plugin ID, shared-file paths, and local storage keys remain compatible with 0.3.0.
