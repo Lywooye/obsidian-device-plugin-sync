@@ -11,7 +11,8 @@ Validation date: 2026-10-03 (UTC).
 - The three runtime files were installed over the previous local installation after a backup. Obsidian displayed version 0.3.4; after re-enabling only this plugin, the desktop settings showed that compatibility checks passed. The shared policy was unchanged during replacement. No manual Sync application or cleanup was performed.
 - This update does not extend the separate installation-observer or cleanup profiles. Mobile installation recognition and cleanup must still pass their own checks; manual registration remains available for unrecognized installations.
 - Not tested: live phone/iPad transfers, real mobile IndexedDB durability, cold-start persistence, in-flight transfers, or cross-device deletion behavior. Mobile writes remain experimental and require an explicit choice on each device.
-- Release-directory review and GitHub CI for this version are recorded separately once completed.
+- [GitHub CI](https://github.com/Lywooye/obsidian-device-plugin-sync/actions/runs/37092336818) passed for source commit `34964bd9897a1173410ea536fa00ad773078a161`: 141 passed, zero failed, 51 expected native-fixture skips. The same commit passed the community branch preview with no blocking errors.
+- [GitHub release 0.3.4](https://github.com/Lywooye/obsidian-device-plugin-sync/releases/tag/0.3.4) is published. All five uploaded asset digests match local files, and the ZIP contains exactly the three matching runtime files. On 2026-10-03 (UTC), the full 0.3.4 directory review completed for the same source commit. The public listing showed current version 0.3.4, Review: Satisfactory, and an active Add to Obsidian link. These confirm directory availability, not live mobile Sync behavior.
 
 ---
 
