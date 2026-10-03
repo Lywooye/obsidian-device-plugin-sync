@@ -1,6 +1,6 @@
 {
   "name": "obsidian-device-plugin-sync",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "description": "Per-device plugin folder exclusions for Obsidian Sync (experimental)",
   "scripts": {
@@ -8,7 +8,8 @@
     "check": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:native": "node scripts/check-native.cjs",
-    "package": "npm run check && npm test && npm run build && node scripts/package.mjs"
+    "package": "npm run check && npm test && npm run build && node scripts/package.mjs",
+    "test:mobile-native": "node scripts/check-mobile-native.cjs"
   },
   "devDependencies": {
     "@types/jsdom": "21.1.7",

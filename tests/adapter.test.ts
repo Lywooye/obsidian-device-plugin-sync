@@ -52,7 +52,7 @@ test('missing private methods fail fingerprints without changing exclusions', as
   const exclusions = sync.filter.ignoreFolders;
   const result = await inspectSync(hostFor(sync), profile.version, false, '.obsidian');
   assert.equal(result.writable, false);
-  assert.match(result.reason, /与已验证版本不同/);
+  assert.match(result.reason, /尚未适配这台设备的 Sync 实现/);
   assert.equal(sync.filter.ignoreFolders, exclusions);
   assert.deepEqual(exclusions, ['Private']);
 });
@@ -160,19 +160,17 @@ test('changed private method is read-only even when its method name is unchanged
   assert.deepEqual(fixture.filter.ignoreFolders, ['Private']);
 });
 
-test('mobile remains read-only by default and permits explicit opt-in only after every gate passes', { skip: skipNative }, async () => {
+test('desktop methods cannot satisfy the mobile profile even with explicit opt-in', { skip: skipNative }, async () => {
   const fixture = nativeFixture();
-  const blocked = await inspectSync(fixture.app, profile.version, true, '.obsidian');
-  assert.equal(blocked.writable, false);
-  assert.equal(blocked.experimentalEligible, true);
-  assert.equal(blocked.adapter, undefined);
-  const enabled = await inspectSync(fixture.app, profile.version, true, '.obsidian', true);
-  assert.equal(enabled.writable, true, enabled.reason);
+  for (const optIn of [false, true]) {
+    const result = await inspectSync(fixture.app, profile.version, true, '.obsidian', optIn);
+    assert.equal(result.writable, false);
+    assert.notEqual(result.experimentalEligible, true);
+    assert.equal(result.adapter, undefined);
+    assert.match(result.reason, /sync.saveData/);
+    assert.equal(JSON.parse(result.diagnostics).profilePlatform, 'mobile');
+  }
   assert.deepEqual(fixture.writes, []);
-  fixture.sync.setIgnoreFolders = () => { throw new Error('must never run'); };
-  const incompatible = await inspectSync(fixture.app, profile.version, true, '.obsidian', true);
-  assert.equal(incompatible.writable, false);
-  assert.notEqual(incompatible.experimentalEligible, true);
 });
 
 test('native save is awaited and only the synthetic storage receives the requested exclusions', { skip: skipNative }, async () => {

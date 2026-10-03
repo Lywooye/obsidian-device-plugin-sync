@@ -1,5 +1,6 @@
 import { t } from './i18n';
-import profile from './native-profile.json';
+import desktopProfile from './native-profile.json';
+import mobileProfile from './native-mobile-profile.json';
 import { PLUGIN_ID } from './model';
 import { samePaths, type ExclusionAdapter } from './transaction';
 
@@ -28,7 +29,9 @@ async function digest(fn: unknown): Promise<string> {
 
 // Private Sync writes are confined to this module. Never patch the engine or its DB.
 export async function inspectSync(app: unknown, version: string, mobile: boolean, configDir: string, mobileExperimental = false): Promise<Compatibility> {
-  const report: Record<string, unknown> = { apiVersion: version, platform: mobile ? 'mobile' : 'desktop', profile: profile.version };
+  const profile = mobile ? mobileProfile : desktopProfile;
+  const report: Record<string, unknown> = { apiVersion: version, platform: mobile ? 'mobile' : 'desktop',
+    profile: profile.version, profilePlatform: mobile ? 'mobile' : 'desktop' };
   const fail = (reason: string): Compatibility => ({ writable: false, reason, diagnostics: JSON.stringify(report, null, 2) });
   try {
     const host = app as { internalPlugins?: { getEnabledPluginById?(id: string): unknown } };
@@ -63,7 +66,7 @@ export async function inspectSync(app: unknown, version: string, mobile: boolean
     if (mismatches.length) return fail(t('fingerprintsMismatch', { methods: mismatches.join(', ') }));
     probeFilter(filter, configDir);
     report.detachedFilterProbe = 'passed';
-    // A matching desktop source is not proof of the separately shipped mobile build.
+    // Reviewed mobile methods still need real-device transfer and persistence validation.
     if (mobile && !mobileExperimental) return { ...fail(t('mobileReadonly')), experimentalEligible: true };
     const adapter: ExclusionAdapter = {
       read: () => pathsFrom(sync.filter.ignoreFolders),

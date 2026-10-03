@@ -4,7 +4,7 @@ English · [简体中文](README.zh-CN.md)
 
 Choose which Obsidian plugins can sync on your computers, phone, and iPad. Manage all devices from one computer, or choose plugins for your phone or iPad on that device.
 
-This plugin is free under the [MIT license](LICENSE). It requires an **Obsidian account and a paid Obsidian Sync subscription**; it uses the official Sync service already configured for your vault. It is an independent community project, not an official Obsidian product. Version **0.3.3 is experimental**: it supports Obsidian 1.13.7 only when the device passes compatibility checks. Real phone and iPad sync has not yet been validated. Start with a test vault.
+This plugin is free under the [MIT license](LICENSE). It requires an **Obsidian account and a paid Obsidian Sync subscription**; it uses the official Sync service already configured for your vault. It is an independent community project, not an official Obsidian product. Version **0.3.4 is experimental**: it supports Obsidian 1.13.7 only when the device passes compatibility checks. Real phone and iPad sync has not yet been validated. Start with a test vault.
 
 [Repository](https://github.com/Lywooye/obsidian-device-plugin-sync) · [Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases)
 
@@ -32,10 +32,12 @@ When creating the list, computers start with every plugin selected; phones and i
 
 1. Wait for this plugin, the list, and installation records in `Device Plugin Sync/` to finish syncing, then enable this plugin on the mobile device.
 2. Open its settings and refresh. Select the entry for this phone or iPad. Different devices should use different entries.
-3. Check compatibility. The experimental mobile option is available only if all checks pass on that device.
+3. Check compatibility. If the checks pass, **turn on Allow sync changes on this phone or tablet (experimental) yourself on this device**. Installing the update does not turn it on for you.
 4. Click **Choose this device’s plugins** and select the plugins you want. It includes all plugins registered in the shared list, even if they have not downloaded to the phone.
 5. Save and apply, review the preview, then confirm.
 6. Wait for Sync to finish before editing on another device.
+
+Version 0.3.4 updates mobile Sync compatibility only. Automatic installation detection and local cleanup have separate checks and may still be unavailable on mobile. For a plugin you installed on this phone or iPad, use **Register local installs** if detection is unavailable. Do not bypass a failed cleanup check.
 
 If the old interface is still visible after an update, disable and re-enable Device Selective Sync only. A newer version of the shared table does not mean its choices have been applied on this device; check the local result.
 
@@ -50,7 +52,7 @@ For initial setup, you can pause official Sync, apply the choices on the current
 | Computer | Allow sync | Not applicable | Block sync |
 | Phone or iPad | Allow sync | Allow sync | Block sync |
 
-For example, installing a new plugin on your phone also allows computers to receive it, while other phones and iPads exclude it by default. You can change that later in the selection table. **These defaults do not reset existing plugins, your manual choices, or choices when a plugin is updated.**
+Once its installation source is registered, a new plugin installed on your phone is allowed on computers too, while other phones and iPads exclude it by default. Mobile installation detection may still be unavailable; in that case, confirm the source with **Register local installs**. You can change that later in the selection table. **These defaults do not reset existing plugins, your manual choices, or choices when a plugin is updated.**
 
 Upgrade computers, phones, and iPads to this plugin version 0.3.0 or later; older versions do not handle new plugins automatically. Set up each device first:
 
@@ -162,9 +164,11 @@ Saving choices on mobile and changing local Sync settings are separate steps. If
 
 Obsidian has no public Sync API for the operation this plugin needs, so this version uses internal interfaces. Those may change after an upgrade, or differ between platforms even with the same displayed version number.
 
-The plugin checks the version, fingerprints of 12 internal methods, and file-filter behavior. A mismatch blocks changes to Sync settings. You can still view choices and previews. **Official Sync itself is not paused by this protection.** Saved restrictions continue to be handled by Sync; new choices have not taken effect.
+Version 0.3.4 uses separate desktop and mobile compatibility profiles, selected for the platform running Obsidian. It requires the exact version, all 12 method fingerprints from that profile, and the isolated file-filter checks to match. It never combines matching methods from different profiles. A mismatch blocks changes to Sync settings. You can still view choices and previews. **Official Sync itself is not paused by this protection.** Saved restrictions continue to be handled by Sync; new choices have not taken effect.
 
-Recognizing installations from the official community-plugin interface has a separate compatibility check for the installation method. If it fails, the plugin must not guess the source. Automatic handling and manual application both respect the Sync compatibility checks.
+The mobile profile was reviewed against the official Android 1.13.7 build; its 12 Sync/filter fingerprints also match those shown in an iPhone 1.13.7 diagnostic screenshot. This is not verification of the entire iOS source or an iPhone/iPad sync test. The source, hashes, reviewed differences, and remaining limits are recorded in [compatibility review](docs/compatibility-review.md).
+
+Recognizing installations from the official community-plugin interface and cleaning up local plugins still have separate checks. This update does not change those checks. If detection is unavailable, use **Register local installs**; if cleanup is blocked, keep the files. Automatic handling and manual application both respect the Sync checks and the mobile experimental switch.
 
 Supporting another version requires checking its actual implementation and behavior. Changing a version number or bypassing a check is not sufficient. Mobile devices showing 1.13.7 must still pass their own checks and have the experimental option enabled locally.
 
@@ -178,11 +182,11 @@ Plugin folders can include `data.json` or other settings files containing API ke
 
 For reviewers: the runtime uses private Sync methods to read and save exclusions, a private plugin-manager method to stop a plugin during confirmed cleanup, and a temporary wrapper around the private community-plugin installation method to observe new installations. The wrapper is removed on unload only if it is still this plugin’s wrapper. There is no claim that these interfaces are supported by Obsidian or stable across updates. Exact-version and method-fingerprint checks block affected features when they do not match; they are compatibility checks, not a security boundary against other plugins.
 
-Native-source tests read a developer’s locally installed desktop Obsidian build into memory and use isolated test objects. The repository and release assets include fingerprints and test tools, **not Obsidian’s native source, application bundle, or extracted native fixtures**. Those native tests require access to a compatible local build and do not establish mobile or network correctness.
+Native-source tests read a developer’s local desktop build or the specified official Android source into memory and use isolated test objects. The repository and release assets include fingerprints and test tools, **not Obsidian’s native source, application bundle, or extracted native fixtures**. Those native tests require a compatible local build. They do not validate real IndexedDB storage, cold starts, mobile devices, or network transfers.
 
 ## Manual installation
 
-Version 0.3.3 completed the community directory’s automated review. Open the [community listing](https://community.obsidian.md/plugins/device-plugin-sync) and choose **Add to Obsidian**. For manual installation, download the runtime files or installation ZIP from [GitHub Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases), or build the ZIP in `dist`:
+Version 0.3.3 completed the community directory’s automated review; this does not establish approval of 0.3.4. Open the [community listing](https://community.obsidian.md/plugins/device-plugin-sync) and choose **Add to Obsidian**. For manual installation, download the runtime files or installation ZIP from [GitHub Releases](https://github.com/Lywooye/obsidian-device-plugin-sync/releases), or build the ZIP in `dist`:
 
 1. Disable an existing Device Selective Sync installation first.
 2. Put the three runtime files from the ZIP in the vault's actual configuration folder:
@@ -217,7 +221,14 @@ npm run test:native
 npm run test:native -- --asar /absolute/path/to/obsidian.asar
 ```
 
-The project includes compatibility fingerprints and inspection tools, not Obsidian's application files or internal source code.
+For the reviewed mobile source, point the environment variable at your local copy of `assets/public/app.js` from the official Android 1.13.7 APK:
+
+```sh
+OBSIDIAN_MOBILE_APP_JS=/absolute/path/to/app.js node scripts/check-mobile-native.cjs
+OBSIDIAN_MOBILE_APP_JS=/absolute/path/to/app.js node --import tsx --test tests/mobile-adapter.test.ts
+```
+
+These checks first verify the complete `app.js` SHA-256 before inspecting methods. The [compatibility review](docs/compatibility-review.md) records the official source and expected hashes. The project includes fingerprints and inspection tools, not Obsidian application files or native source.
 
 The public release is prepared for [Lywooye/obsidian-device-plugin-sync](https://github.com/Lywooye/obsidian-device-plugin-sync) with the [MIT license](LICENSE), English and Chinese guides, and downloadable runtime assets. A GitHub release is separate from community-directory approval.
 

@@ -1,3 +1,20 @@
+# 0.3.4 mobile Sync compatibility
+
+Validation date: 2026-10-03 (UTC).
+
+- Fixed mobile 1.13.7 being compared with desktop-only method fingerprints. Desktop and mobile now select separate complete profiles; there is no per-method mixing or fallback. The version, all 12 method hashes, detached filter checks, readiness checks, and explicit local mobile opt-in still apply.
+- Source evidence: the official Android 1.13.7 bundle matches all 12 fingerprints observed in the supplied iPhone diagnostics. The four differences from desktop are minified free-variable renames; the relevant helper dependencies were reviewed. This is not a complete iOS binary review or a real-device test. See [compatibility review](compatibility-review.md).
+- With the reviewed mobile source supplied through `OBSIDIAN_MOBILE_APP_JS`, `npm run package` passed: type checking, **192 tests, zero failures, zero skips**, build, and ZIP packaging.
+- `npm run test:native`: desktop 12 method fingerprints and 36 detached filtering assertions passed. `npm run test:mobile-native`: mobile 12 fingerprints and 56 filtering assertions passed.
+- The 24 new test cases cover rejecting unreviewed bundles, cross-platform profile rejection, each changed method being rejected despite opt-in, isolated inspection, awaited storage, storage rejection, concurrent changes, native save/load restoration, and KeepAwake release. Storage and platform services are synthetic; actual method text and the relevant helpers come from the locally supplied bundle.
+- Without the mobile source, 23 mobile-native cases explicitly skip, and the unreviewed-source rejection case still runs. With neither desktop nor mobile source, public CI is expected to skip 51 native cases. Tests never download native binaries or commit extracted source.
+- The three runtime files were installed over the previous local installation after a backup. Obsidian displayed version 0.3.4; after re-enabling only this plugin, the desktop settings showed that compatibility checks passed. The shared policy was unchanged during replacement. No manual Sync application or cleanup was performed.
+- This update does not extend the separate installation-observer or cleanup profiles. Mobile installation recognition and cleanup must still pass their own checks; manual registration remains available for unrecognized installations.
+- Not tested: live phone/iPad transfers, real mobile IndexedDB durability, cold-start persistence, in-flight transfers, or cross-device deletion behavior. Mobile writes remain experimental and require an explicit choice on each device.
+- Release-directory review and GitHub CI for this version are recorded separately once completed.
+
+---
+
 # 0.3.3 settings heading correction
 
 - The 0.3.2 branch preview reported that a settings heading must not repeat the plugin name. The redundant page heading is now removed; the introductory text and all controls remain.

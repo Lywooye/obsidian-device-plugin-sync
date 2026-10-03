@@ -1,7 +1,7 @@
 {
   "id": "device-plugin-sync",
   "name": "Device Selective Sync",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "minAppVersion": "1.13.7",
   "description": "Choose plugin sync per device, with installation-based defaults and optional recoverable local cleanup. Requires a paid Sync subscription.",
   "author": "Lywooye",

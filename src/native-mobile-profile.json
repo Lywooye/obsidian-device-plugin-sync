@@ -1,0 +1,21 @@
+{
+  "version": "1.13.7",
+  "fingerprints": {
+    "sync": {
+      "setIgnoreFolders": "2b14f34cd2636e8f49c59a877519a8ce3b939296ff12e38dc82505b4e7a13d1d",
+      "changeFilter": "c9852c59d82857010aaad697a442040f01f30450b9297617b4222d4057b59d19",
+      "forceSaveData": "fd35e19ec6b92ed4c0099f5f8fd017d3acfeb3772e34fe2f3415e7d2f4e96dd5",
+      "setDirty": "e632ea8d1d7c9a6e6038de18c8a7b819cfed54c5254c31aef601b677a732b7dd",
+      "saveData": "9eddd8adce38f152ec590abba57be415ee1c2a6acaa12c87c7b4d94c951c1dfc",
+      "requestSync": "4a9ea34f18eb9ca6e8dc6efab8d5de99788b87e7b5a0155ea284fb16972e4eb6",
+      "loadData": "bb979b7ff63c2b27f098c39c98a8ba9bf782107609d8383b246d1390977a1be4"
+    },
+    "filter": {
+      "allowSyncFile": "b9e95ae48d7df05b5b313ccc6ce5c8e5cc1c25c5520a12ae383c55044c4aa270",
+      "_allowSyncFile": "febef5ed42bab1d5155eac7ff1e8adc9033a4debe435e68ca2fdd50d3531b99a",
+      "clearCache": "de0dc83046a90168263dd8c5192c23544de29b80ae0c2557133823e0258e0424",
+      "isPluginFile": "94a8def10838106bf8153d50d087a8f044eaaeb29903d1a53bb88561571af2fd",
+      "changeFilter": "2d02189f5e5bd0914b75f3ed95a937451328b5142b79f5fc87b6e2f8753d2117"
+    }
+  }
+}

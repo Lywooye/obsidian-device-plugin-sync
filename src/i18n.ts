@@ -167,7 +167,7 @@ const messages = {
   probeExclusion: ["兼容测试失败：无法确认插件文件会被阻止同步。", "Compatibility test failed: plugin files were not blocked from syncing as expected."],
   probeUnrelated: ["兼容测试失败：其他文件的同步也受到了影响。", "Compatibility test failed: unrelated files were also blocked."],
   versionUnsupported: ["尚未验证 Obsidian {version}，暂时只能查看。当前支持的版本：{supported}。", "Obsidian {version} has not been verified; changes are disabled. Currently supported version: {supported}."],
-  fingerprintsMismatch: ["当前 Sync 与已验证版本不同，暂时不能应用。技术信息：{methods}", "This Sync build differs from the verified version, so changes are disabled. Technical details: {methods}"],
+  fingerprintsMismatch: ["当前插件尚未适配这台设备的 Sync 实现，暂时不能应用选择。即使版本号相同，电脑和手机也可能不同。技术信息：{methods}", "This device’s Sync implementation is not supported by this plugin build, so choices cannot be applied. Computers and phones can differ even with the same version number. Technical details: {methods}"],
   compatible: ["兼容检查通过，可以应用选择。实际跨设备同步效果仍需在你的设备上确认。", "Compatibility checks passed. You can apply your choices; actual transfers still need to be checked on your devices."],
   compatibilityFailed: ["暂时不能应用同步选择：{error}", "Sync choices cannot be applied yet: {error}"],
   language: ["界面语言", "Interface language"],
